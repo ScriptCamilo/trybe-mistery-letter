@@ -6,16 +6,20 @@ function createSpanLetter(text) {
 }
 
 function setLetter() {
+  const error = 'Por favor, digite o conteúdo da carta.';
   const input = document.querySelector('#carta-texto').value.split(' ');
   const letter = document.querySelector('#carta-gerada');
+  const inputFiltered = input.filter((text) => text !== '');
 
   letter.innerText = '';
 
-  input.forEach((text, index) => {
+  if (!inputFiltered.length) return letter.appendChild(createSpanLetter(error));
+
+  inputFiltered.forEach((text, index) => {
     const word = createSpanLetter(text);
 
     letter.appendChild(word);
-    if (input.length === index + 1) letter.innerHTML += '.';
+    if (inputFiltered.length === index + 1) letter.innerHTML += '.';
     else letter.innerHTML += ' ';
   });
 }
