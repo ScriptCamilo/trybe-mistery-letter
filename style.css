@@ -4,3 +4,9 @@
   text-decoration: 0;
   list-style-type: none;
 }
+
+.newspaper {
+  background-color: antiquewhite;
+  font-family: 'Times New Roman';
+  font-weight: bold;
+}
