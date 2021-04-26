@@ -1,6 +1,25 @@
+function getClasses() {
+  const style = ['newspaper', 'magazine1', 'magazine2'];
+  const size = ['medium', 'big', 'reallybig'];
+  const rotation = ['rotateleft', 'rotateright'];
+  const skew = ['skewleft', 'skewright'];
+  const classes = [style, size, rotation, skew];
+
+  return classes.reduce((classList, classe, index) => {
+    const firstRandom = Math.floor(Math.random() * 4);
+    const secondRandom = Math.floor(Math.random() * 3);
+    const randomIndex = index >= 2 ? firstRandom : secondRandom;
+    const list = classList;
+
+    if (classe[randomIndex]) list.push(classe[randomIndex]);
+    return list;
+  }, []).join(' ');
+}
+
 function createSpanLetter(text) {
   const span = document.createElement('span');
   span.innerText = text;
+  span.className = getClasses();
 
   return span;
 }
