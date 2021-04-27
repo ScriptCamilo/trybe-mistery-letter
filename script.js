@@ -24,6 +24,12 @@ function createSpanLetter(text) {
   return span;
 }
 
+function wordCount(number) {
+  const count = document.querySelector('#carta-contador');
+
+  count.innerText = number;
+}
+
 function setLetter() {
   const error = 'Por favor, digite o conteúdo da carta.';
   const input = document.querySelector('#carta-texto').value.split(' ');
@@ -31,6 +37,7 @@ function setLetter() {
   const inputFiltered = input.filter((text) => text !== '');
 
   letter.innerText = '';
+  letter.parentElement.style.padding = '20px';
 
   if (!inputFiltered.length) return letter.appendChild(createSpanLetter(error));
 
@@ -38,9 +45,10 @@ function setLetter() {
     const word = createSpanLetter(text);
 
     letter.appendChild(word);
-    if (inputFiltered.length === index + 1) letter.innerHTML += '.';
+    if (inputFiltered.length === index + 1) letter.innerHTML += '';
     else letter.innerHTML += ' ';
   });
+  wordCount(inputFiltered.length);
 }
 
 function getEvents() {
